@@ -37,3 +37,10 @@ Si llega un cliente:
 - se generan los tiempos de llegada correspondiente a hora pico o hora regular, agregando al 3er empleado en caso que sea necesario
 - global_t = arrival_t
 - si algun trabajador esta libre se pasa al ultimo caso
+
+Si un empleado termina una preparacion:
+
+- global_t = min(arrival_t,waiting_t)
+- t = arrival_time.dequeue
+- se agrega global_t - t como tiempo de espera a la cola `waiting_time`
+- se genera el tipo de pedido en dependencia de sushi o sandwish y de aqui se obtiene el tiempo de preparacion
