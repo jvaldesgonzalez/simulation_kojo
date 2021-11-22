@@ -8,7 +8,7 @@ La cocina de Kojo es uno de los puestos de comida rapida en un centro comercial.
 
 El metodo creado para la solucion del problema `Kojo's Kitchen` modela la llegada a la tienda con 2 y 3 empleados. A la hora de la apertura de la tienda comienzan a llegar los comensales y estos son atendidos por los empleados siempre que alguno este desocupado, sino esperaran en la cola. De aqui podemos deducir algunas de las variables principales:
 
-- estado de cada empleado `worker_status`
+- estado de cada empleado `attendand_status`
 - cola para la llegada de un cliente a la tienda
 - tiempo que se demora cada empleado en atender al cliente (esto es dependiente del tipo de pedido que realiza el cliente ya sea sandwich o sushi).
 - listado de los tiempos que se demoro en la cola cada cliente (con esto se calculara el resultado final pedido)
@@ -23,3 +23,17 @@ El estado inicial del problema sera el siguiente:
 
 - t = 0 #tiempo
 - worker_status(i) = NOT_BUSSY
+- arrival_time = []
+- waiting_time = []
+- arrival_t = gen_exp()
+- global_t = arrival_t
+
+Si no podemos seguir trabajando(la tienda cerro y no hay mas clientes en cola):
+
+- termina el proceso
+
+Si llega un cliente:
+
+- se generan los tiempos de llegada correspondiente a hora pico o hora regular, agregando al 3er empleado en caso que sea necesario
+- global_t = arrival_t
+- si algun trabajador esta libre se pasa al ultimo caso

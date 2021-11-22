@@ -21,7 +21,7 @@ def generate_new_client(i, waiting_t_q, global_t, arrival_t_q, worker_spend_t):
     waiting_t_q.append(global_t - arrival_t_q.pop(0))
     is_sandwish = False if generate_uniform(
         0, 1) < sandwish_sushi_dist else True
-    if not is_sandwish:
-        worker_spend_t[i] = global_t + generate_uniform(5, 8) * 60
-    else:
+    if is_sandwish:
         worker_spend_t[i] = global_t + generate_uniform(3, 5) * 60
+    else:
+        worker_spend_t[i] = global_t + generate_uniform(5, 8) * 60
